@@ -14,11 +14,13 @@ function love.load()
     })
 
     gTextures = {
-        ['main'] = love.graphics.newImage('graphics/pikminsprites2.png')
+        ['main'] = love.graphics.newImage('graphics/pikminsprites2.png'),
+        ['bigflowers'] = love.graphics.newImage('graphics/flowers.png')
     }
 
     gFrames = {
-        ['pikmin'] = GenerateBasicPikmin(gTextures['main'])
+        ['pikmin'] = GenerateBasicPikmin(gTextures['main']),
+        ['flower'] = GenerateFlowers(gTextures['bigflowers'])
     }
 
     for i, quad in ipairs(gFrames['pikmin']) do
@@ -26,9 +28,9 @@ function love.load()
     end       
 
     gStateMachine = StateMachine {
-        ['pikminselect'] = function() return PikminSelectState() end
+        ['display'] = function() return FinalDisplayState() end
     }
-    gStateMachine:change('pikminselect')
+    gStateMachine:change('display')
 
     love.keyboard.keysPressed = {}
 end

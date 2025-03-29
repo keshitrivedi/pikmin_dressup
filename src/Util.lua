@@ -40,3 +40,19 @@ function GenerateBasicPikmin(atlas)
     return pikminQuads
 end
 
+function GenerateFlowers(atlas)
+    local x = 0
+    local y = 0
+
+    local flowerQuads = {}
+
+    local atlasWidth, atlasHeight = atlas:getDimensions()
+
+    for i = 1, 7 do
+        flowerQuads[i] = love.graphics.newQuad(x, y, 42, 42, atlasWidth, atlasHeight)
+        x = x + 42
+    end
+
+    return flowerQuads
+end
+

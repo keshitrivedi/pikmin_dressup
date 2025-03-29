@@ -2,7 +2,7 @@ Pikmin = Class{}
 
 function Pikmin:init()
     self.width = 63
-    self.height = 32
+    self.height = 96
 
     self.x = VIRTUAL_WIDTH/2 - self.width/2
     self.y = VIRTUAL_HEIGHT/2 - self.height/2

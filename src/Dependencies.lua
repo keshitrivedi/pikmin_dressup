@@ -13,6 +13,5 @@ require 'src/Decor'
 
 -- states
 require 'src/states/BaseState'
-require 'src/states/PikminSelectState'
-require 'src/states/FlowerSelectState'
 require 'src/states/DecorSelectState'
+require 'src/states/FinalDisplayState'

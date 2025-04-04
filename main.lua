@@ -19,18 +19,15 @@ function love.load()
         ['sky'] = love.graphics.newImage('graphics/skybck8.png'),
         ['main'] = love.graphics.newImage('graphics/pikminsprites2.png'),
         ['bigflowers'] = love.graphics.newImage('graphics/flowers.png'),
-        ['decorsheet'] = love.graphics.newImage('graphics/decorsprites2.png')
+        ['decorsheet'] = love.graphics.newImage('graphics/decorsprites2.png'),
+        ['grass'] = love.graphics.newImage('graphics/grass.png')
     }
 
     gFrames = {
         ['pikmin'] = GenerateBasicPikmin(gTextures['main']),
         ['flower'] = GenerateFlowers(gTextures['bigflowers']),
         ['decor'] = GenerateDecor(gTextures['decorsheet'])
-    }
-
-    for i, quad in ipairs(gFrames['pikmin']) do
-        print("Quad " .. i .. ":", quad)
-    end       
+    }    
 
     gStateMachine = StateMachine {
         ['display'] = function() return FinalDisplayState() end
@@ -38,6 +35,12 @@ function love.load()
     gStateMachine:change('display')
 
     love.keyboard.keysPressed = {}
+
+    grassX = 0
+    Timer.every(1, function()
+        grassX = (grassX == 0) and -432 or 0
+    end)
+    
 end
 
 function love.resize(w, h)
@@ -58,6 +61,8 @@ end
 
 function love.update(dt)
     background_scroll = (background_scroll + BACKGROUND_SCROLL_SPEED*dt) % BACKROUND_LOOPING_POINT
+
+    Timer.update(dt)
     gStateMachine:update(dt)
 
     love.keyboard.keysPressed = {}
@@ -68,6 +73,7 @@ function love.draw()
     push:apply('start')
 
     love.graphics.draw(gTextures['sky'], -background_scroll, 0)
+    love.graphics.draw(gTextures['grass'], grassX, 0)
     gStateMachine:render()
 
     push:apply('end')

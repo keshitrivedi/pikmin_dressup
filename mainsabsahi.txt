@@ -18,12 +18,15 @@ function love.load()
     gTextures = {
         ['sky'] = love.graphics.newImage('graphics/skybck8.png'),
         ['main'] = love.graphics.newImage('graphics/pikminsprites2.png'),
-        ['bigflowers'] = love.graphics.newImage('graphics/flowers.png')
+        ['bigflowers'] = love.graphics.newImage('graphics/flowers.png'),
+        ['decorsheet'] = love.graphics.newImage('graphics/decorsprites2.png'),
+        ['grass'] = love.graphics.newImage('graphics/grass.png')
     }
 
     gFrames = {
         ['pikmin'] = GenerateBasicPikmin(gTextures['main']),
-        ['flower'] = GenerateFlowers(gTextures['bigflowers'])
+        ['flower'] = GenerateFlowers(gTextures['bigflowers']),
+        ['decor'] = GenerateDecor(gTextures['decorsheet'])
     }
 
     for i, quad in ipairs(gFrames['pikmin']) do

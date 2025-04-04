@@ -56,3 +56,19 @@ function GenerateFlowers(atlas)
     return flowerQuads
 end
 
+function GenerateDecor(atlas)
+    local x = 0
+    local y = 0
+
+    local decorQuads = {}
+
+    local atlasWidth, atlasHeight = atlas:getDimensions()
+
+    for i = 1, 7 do
+        decorQuads[i] = love.graphics.newQuad(x, y, 63, 96, atlasWidth, atlasHeight)
+        x = x + 63
+    end
+
+    return decorQuads
+end
+

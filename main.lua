@@ -15,6 +15,11 @@ function love.load()
         resizable = true
     })
 
+    sounds = {
+        ['select'] = love.audio.newSource('sounds/select2.wav', 'static'),
+        ['mode'] = love.audio.newSource('sounds/Pickup_Coin38.wav', 'static')
+    }
+
     gTextures = {
         ['sky'] = love.graphics.newImage('graphics/skybck8.png'),
         ['main'] = love.graphics.newImage('graphics/pikminsprites2.png'),
@@ -40,7 +45,6 @@ function love.load()
     Timer.every(1, function()
         grassX = (grassX == 0) and -432 or 0
     end)
-    
 end
 
 function love.resize(w, h)

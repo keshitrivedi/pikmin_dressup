@@ -22,6 +22,7 @@ function FinalDisplayState:update(dt)
     local modeKeys = {p=1, f=2, d=3}
     for key, mode in pairs(modeKeys) do
         if love.keyboard.wasPressed(key) then
+            sounds['mode']:play()
             self.selectMode = mode
             break
         end

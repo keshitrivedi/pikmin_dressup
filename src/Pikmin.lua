@@ -12,10 +12,12 @@ end
 
 function Pikmin:update(dt)
     if love.keyboard.wasPressed('left') then
+        sounds['select']:play()
         self.skin = (self.skin - 2) % 7 + 1
     end
 
     if love.keyboard.wasPressed('right') then
+        sounds['select']:play()
         self.skin = (self.skin % 7) + 1
     end
 end

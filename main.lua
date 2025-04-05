@@ -17,8 +17,14 @@ function love.load()
 
     sounds = {
         ['select'] = love.audio.newSource('sounds/select2.wav', 'static'),
-        ['mode'] = love.audio.newSource('sounds/Pickup_Coin38.wav', 'static')
+        ['mode'] = love.audio.newSource('sounds/Pickup_Coin38.wav', 'static'),
+
+        -- https://pixabay.com/sound-effects/cottagecore-17463/
+        ['bgm'] = love.audio.newSource('sounds/cottagecore-17463.mp3', 'static')
     }
+
+    sounds['bgm']:setLooping(true)
+    sounds['bgm']:play()
 
     gTextures = {
         ['sky'] = love.graphics.newImage('graphics/skybck8.png'),
